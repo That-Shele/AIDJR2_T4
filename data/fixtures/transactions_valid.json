@@ -1,0 +1,5 @@
+[
+  {"id": "tx_101", "amount": "1,250.75", "currency": "USD", "timestamp": "2025-04-01T08:30:00Z", "status": "completed"},
+  {"transaction_id": 102, "total": 4525, "currency_code": "EUR", "created_at": "01/04/2025 09:45", "state": "processing"},
+  {"ref": "B-103", "amount": "£18.20", "date": "2025-04-01", "result": "success"}
+]

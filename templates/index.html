@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transacciones | Normalizador</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">N</span><span>normalizador<span class="brand-dot">.</span></span></a>
+    <span class="topbar-label">OPERACIONES / TRANSACCIONES</span>
+  </header>
+  <main>
+    <section class="page-heading">
+      <div><p class="eyebrow">CENTRO DE DATOS</p><h1>Transacciones</h1></div>
+      <form class="upload-form" method="post" enctype="multipart/form-data">
+        <label class="file-button" for="file-upload">＋ Cargar JSON</label>
+        <input id="file-upload" type="file" name="file" accept=".json,application/json" required>
+        <button class="button-primary" type="submit">Procesar archivo</button>
+      </form>
+    </section>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}
+    {% endwith %}
+
+    <form class="dataset-bar" method="get">
+      <label for="dataset">ARCHIVO DE DATOS</label>
+      <select id="dataset" name="dataset" onchange="this.form.submit()">
+        {% for dataset in datasets %}<option value="{{ dataset }}" {% if dataset == dataset_id %}selected{% endif %}>{{ dataset }}</option>{% endfor %}
+      </select>
+      <span class="dataset-note">{{ metrics.total }} registros recibidos</span>
+    </form>
+
+    <section class="metric-grid" aria-label="Resumen de procesamiento">
+      <article class="metric metric-total"><span class="metric-label">TOTAL PROCESADAS</span><strong>{{ metrics.total }}</strong><span class="metric-foot">registros de entrada</span></article>
+      <article class="metric metric-valid"><span class="metric-label">VÁLIDAS</span><strong>{{ metrics.valid }}</strong><span class="metric-foot">normalizadas</span></article>
+      <article class="metric metric-invalid"><span class="metric-label">INVÁLIDAS</span><strong>{{ metrics.invalid }}</strong><span class="metric-foot">descartadas con motivo</span></article>
+      <article class="metric metric-currency"><span class="metric-label">MONEDAS</span><strong>{{ metrics.by_currency|length }}</strong><span class="metric-foot">con actividad</span></article>
+    </section>
+
+    <section class="summary-row">
+      <div class="summary-block"><h2>Importes por moneda</h2><div class="currency-list">
+        {% for currency, amount in metrics.by_currency.items() %}<div class="currency-item"><span class="currency-code">{{ currency }}</span><strong>{{ "{:,.2f}".format(amount) }}</strong></div>
+        {% else %}<p class="empty-state">No hay importes válidos.</p>{% endfor %}
+      </div></div>
+      <div class="summary-block"><h2>Estados</h2><div class="status-list">
+        {% for status, count in metrics.by_status.items() %}<div class="status-item"><span class="status-dot status-{{ status }}"></span><span>{{ status|capitalize }}</span><strong>{{ count }}</strong></div>
+        {% else %}<p class="empty-state">Sin estados para mostrar.</p>{% endfor %}
+      </div></div>
+    </section>
+
+    <section class="data-section">
+      <div class="section-heading"><div><p class="eyebrow">REGISTROS NORMALIZADOS</p><h2>Explorar transacciones</h2></div><span class="result-count">{{ transactions|length }} resultados</span></div>
+      <form class="filters" method="get">
+        <input type="hidden" name="dataset" value="{{ dataset_id }}">
+        <label class="search-field"><span>⌕</span><input type="search" name="q" placeholder="Buscar por ID" value="{{ search }}"></label>
+        <select name="status" aria-label="Filtrar por estado"><option value="">Todos los estados</option>{% for status in statuses %}<option value="{{ status }}" {% if status == status_filter %}selected{% endif %}>{{ status|capitalize }}</option>{% endfor %}</select>
+        <select name="currency" aria-label="Filtrar por moneda"><option value="">Todas las monedas</option>{% for currency in currencies %}<option value="{{ currency }}" {% if currency == currency_filter %}selected{% endif %}>{{ currency }}</option>{% endfor %}</select>
+        <button class="button-filter" type="submit">Filtrar</button>
+        <a class="clear-filter" href="{{ url_for('index', dataset=dataset_id) }}">Limpiar</a>
+      </form>
+      <div class="table-wrap"><table><thead><tr><th>ID TRANSACCIÓN</th><th>MONEDA</th><th class="align-right">IMPORTE</th><th>FECHA</th><th>ESTADO</th></tr></thead>
+        <tbody>{% for transaction in transactions %}<tr><td class="id-cell">{{ transaction.tr_id }}</td><td><span class="currency-pill">{{ transaction.tr_curr_type }}</span></td><td class="align-right amount-cell">{{ "{:,.2f}".format(transaction.tr_tot_ammount) }}</td><td class="date-cell">{{ transaction.tr_date }}</td><td><span class="status-badge status-{{ transaction.tr_status }}">{{ transaction.tr_status }}</span></td></tr>
+        {% else %}<tr><td class="table-empty" colspan="5">No hay transacciones para estos filtros.</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </section>
+
+    <details class="rejected-section" {% if rejected %}open{% endif %}>
+      <summary><span>Registros descartados</span><span class="rejected-count">{{ rejected|length }}</span><span class="disclosure">⌄</span></summary>
+      {% if rejected %}<div class="table-wrap"><table><thead><tr><th>FILA</th><th>FUENTE DETECTADA</th><th>MOTIVO</th></tr></thead><tbody>
+        {% for item in rejected %}<tr><td class="id-cell">{{ item.row }}</td><td>{{ item.source }}</td><td class="reason-cell">{{ item.reason }}</td></tr>{% endfor %}
+      </tbody></table></div>{% else %}<p class="empty-state rejected-empty">No se descartaron registros.</p>{% endif %}
+    </details>
+  </main>
+  <footer><span>ESQUEMA NORMALIZADO · v1</span><span>Importes agrupados sin conversión de divisa</span></footer>
+</body>
+</html>

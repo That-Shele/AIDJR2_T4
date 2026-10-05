@@ -1,0 +1,104 @@
+[
+{
+"id": "tx_001",
+"amount": "100.50",
+"currency": "USD",
+"timestamp": "2025-03-10 14:22:00",
+"status": "completed"
+},
+{
+"transaction_id": 204,
+"total": 10050,
+"currency_code": "usd",
+"created_at": "10/03/2025 14:22",
+"state": "OK"
+},
+{
+"ref": "A-77",
+"amount": "€99,99",
+"date": "2025-03-10T14:22:00Z",
+"result": "success"
+},
+{
+"uuid": "8f3b2a1c-99d8-4e3a-b210-918273645a90",
+"monto_centavos": 4500,
+"curr_num": 840,
+"epoch_sec": 1741616520,
+"is_paid": true
+},
+{
+"factura_id": "FAC-2025-883",
+"monto_total": "1.500,75 USD",
+"fecha_emision": "10-03-2025",
+"estado_pago": "Denegado"
+},
+{
+"tx_hash": "0x7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a",
+"value": 0.045,
+"asset": "ETH",
+"mined_at": 1741616520000,
+"confirmations": 12,
+"status": "SETTLED"
+},
+{
+"_id": {
+"$oid": "65f02e1c9d2f3a4b5c6d7e8f"
+},
+"payment": {
+"total_amount": 299.99,
+"iso_currency": "GBP"
+},
+"event_time": "2025-03-10T14:22:00.000Z",
+"statusCode": 200
+},
+{
+"order_num": "#US-90123",
+"price_string": "$1,250.50",
+"currency_symbol": "$",
+"tx_date": "20250310",
+"tx_time": "142200",
+"fulfillment": "DELIVERED"
+},
+{
+"tx_index": "1024",
+"val": "12.5",
+"curr": "MXN",
+"fecha": "Mar 10, 2025 02:22 PM",
+"success": "1"
+},
+{
+"id": "SPLIT-992",
+"pricing": {
+"subtotal": 80.00,
+"tax": 8.00,
+"tip": 12.00,
+"currency": "CAD"
+},
+"datetime": {
+"year": 2025,
+"month": 3,
+"day": 10,
+"hour": 14,
+"minute": 22
+},
+"status_flags": {
+"completed": false,
+"cancelled": true,
+"refunded": false
+}
+},
+{
+"transactionCode": "JP-2025-0012",
+"amountYen": 15000,
+"currency": "JPY",
+"timestamp_iso": "2025-03-10T23:22:00+09:00",
+"status_text": "PAID_AND_CLOSED"
+},
+{
+"identifier": "ERR-9901",
+"charge": null,
+"currency": null,
+"raw_date": "invalid_date_format",
+"state": "FAILED"
+}
+]

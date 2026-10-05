@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #202923;
+  background: #f6f7f4;
+  font-synthesis: none;
+  --ink: #202923;
+  --muted: #78817a;
+  --line: #e3e7e1;
+  --green: #237450;
+  --green-light: #e8f2eb;
+  --red: #b74b3d;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+.topbar { height: 64px; padding: 0 max(28px, calc((100vw - 1180px) / 2)); display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 700; font-size: 17px; }
+.brand-mark { width: 26px; height: 26px; display: grid; place-items: center; color: #fff; background: var(--green); border-radius: 6px; font-family: 'DM Mono', monospace; font-size: 14px; }
+.brand-dot { color: var(--green); }
+.topbar-label, .eyebrow, .metric-label, .dataset-bar > label, th, footer { font-family: 'DM Mono', monospace; letter-spacing: 0; }
+.topbar-label { color: #8b948d; font-size: 10px; }
+main { width: min(1180px, calc(100% - 56px)); margin: 40px auto 56px; }
+.page-heading, .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.eyebrow { margin: 0 0 7px; color: var(--green); font-size: 10px; font-weight: 500; }
+h1 { margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: 0; }
+.upload-form { display: flex; gap: 8px; align-items: center; }
+#file-upload { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.file-button, .button-primary, .button-filter { min-height: 38px; padding: 0 14px; border-radius: 5px; font: 600 12px 'DM Sans', sans-serif; cursor: pointer; }
+.file-button { display: inline-flex; align-items: center; border: 1px solid #d5ddd6; background: #fff; color: var(--ink); }
+.button-primary { border: 1px solid var(--green); background: var(--green); color: #fff; }
+.file-button:hover, .button-filter:hover { background: #f0f4f0; }
+.button-primary:hover { background: #195d3d; }
+.flash { margin-top: 18px; padding: 10px 14px; border-radius: 4px; font-size: 13px; }
+.flash.error { color: #88392f; background: #f9e9e6; }
+.dataset-bar { min-height: 58px; margin-top: 28px; padding: 10px 14px; display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 6px; }
+.dataset-bar > label { color: var(--muted); font-size: 9px; white-space: nowrap; }
+select, input { font: 13px 'DM Sans', sans-serif; color: var(--ink); }
+.dataset-bar select { min-width: 240px; padding: 7px 26px 7px 9px; border: 0; background: #f6f7f4; border-radius: 4px; }
+.dataset-note { margin-left: auto; color: var(--muted); font-size: 12px; }
+.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+.metric { min-height: 122px; padding: 17px 18px; display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.metric-label { font-size: 9px; color: var(--muted); }
+.metric strong { margin-top: 10px; font-size: 29px; font-weight: 600; line-height: 1; }
+.metric-foot { margin-top: 7px; color: var(--muted); font-size: 11px; }
+.metric-valid { border-top: 2px solid #58a579; }
+.metric-invalid { border-top: 2px solid #d98274; }
+.metric-currency { border-top: 2px solid #d4a849; }
+.summary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.summary-block { min-height: 122px; padding: 17px 18px; background: #fff; border: 1px solid var(--line); border-radius: 6px; }
+h2 { margin: 0; font-size: 14px; font-weight: 600; }
+.currency-list, .status-list { margin-top: 13px; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.currency-item, .status-item { display: flex; align-items: center; gap: 9px; min-width: 112px; font-size: 12px; }
+.currency-code { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; }
+.currency-item strong, .status-item strong { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; }
+.status-item { min-width: 112px; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #98a19b; }
+.status-Completado { background: #44986b; }
+.status-Pendiente { background: #d2a137; }
+.status-Fallido { background: #c75b4c; }
+.status-Cancelado { background: #78817a; }
+.status-Reembolsado { background: #5474a6; }
+.data-section { margin-top: 34px; }
+.section-heading { align-items: end; }
+.section-heading h2 { font-size: 19px; }
+.result-count { color: var(--muted); font-size: 12px; }
+.filters { margin-top: 17px; display: flex; align-items: center; gap: 8px; }
+.search-field { height: 36px; min-width: 230px; padding: 0 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #dfe4de; border-radius: 4px; background: #fff; color: #879089; }
+.search-field span { font-size: 20px; line-height: 1; }
+.search-field input { width: 100%; border: 0; outline: 0; }
+.filters select { height: 36px; min-width: 140px; padding: 0 10px; border: 1px solid #dfe4de; border-radius: 4px; background: #fff; }
+.button-filter { min-height: 36px; border: 1px solid #d5ddd6; background: #fff; }
+.clear-filter { padding: 8px 4px; color: var(--muted); font-size: 12px; text-decoration: none; }
+.table-wrap { overflow-x: auto; margin-top: 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { height: 38px; padding: 0 15px; color: #7d877f; background: #fafbf9; border-bottom: 1px solid var(--line); font-size: 9px; font-weight: 400; white-space: nowrap; }
+td { height: 49px; padding: 0 15px; border-bottom: 1px solid #edf0ec; color: #49534c; font-size: 12px; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.id-cell, .amount-cell { color: var(--ink); font-family: 'DM Mono', monospace; font-size: 11px; }
+.amount-cell { font-weight: 500; }
+.date-cell { color: #6f7972; font-family: 'DM Mono', monospace; font-size: 10px; }
+.align-right { text-align: right; }
+.currency-pill { padding: 4px 7px; background: #f1f4f0; border-radius: 3px; color: #5c685f; font-family: 'DM Mono', monospace; font-size: 10px; }
+.status-badge { display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 10px; }
+.status-badge.status-Completado { color: #246a45; background: #e8f2eb; }
+.status-badge.status-Pendiente { color: #866313; background: #f7f0df; }
+.status-badge.status-Fallido { color: #963e34; background: #f8e9e6; }
+.status-badge.status-Cancelado { color: #5f6962; background: #eceeeb; }
+.status-badge.status-Reembolsado { color: #35527e; background: #e9edf5; }
+.table-empty { height: 68px; color: var(--muted); text-align: center; }
+.rejected-section { margin-top: 18px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.rejected-section summary { min-height: 48px; padding: 0 15px; display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; font-size: 13px; font-weight: 600; }
+.rejected-section summary::-webkit-details-marker { display: none; }
+.rejected-count { padding: 3px 7px; border-radius: 10px; background: #f8e9e6; color: #963e34; font: 10px 'DM Mono', monospace; }
+.disclosure { margin-left: auto; color: var(--muted); }
+.rejected-section[open] .disclosure { transform: rotate(180deg); }
+.reason-cell { color: #8e463e; }
+.rejected-section .table-wrap { margin: 0; border-width: 1px 0 0; border-radius: 0 0 6px 6px; }
+.empty-state { color: var(--muted); font-size: 12px; }
+.rejected-empty { margin: 14px 18px; }
+footer { width: min(1180px, calc(100% - 56px)); margin: 0 auto; padding: 17px 0 23px; display: flex; justify-content: space-between; border-top: 1px solid var(--line); color: #929a93; font-size: 9px; }
+
+@media (max-width: 700px) {
+  .topbar { height: 56px; padding: 0 18px; }
+  .topbar-label { font-size: 8px; }
+  main { width: calc(100% - 32px); margin-top: 28px; }
+  .page-heading { align-items: flex-start; flex-direction: column; }
+  h1 { font-size: 26px; }
+  .upload-form { width: 100%; }
+  .file-button { flex: 1; }
+  .dataset-bar { flex-wrap: wrap; gap: 8px; }
+  .dataset-bar select { min-width: 0; flex: 1; }
+  .dataset-note { width: 100%; margin-left: 0; font-size: 11px; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .metric { min-height: 108px; padding: 14px; }
+  .metric strong { font-size: 25px; }
+  .summary-row { grid-template-columns: 1fr; gap: 8px; }
+  .summary-block { min-height: 100px; }
+  .data-section { margin-top: 28px; }
+  .filters { flex-wrap: wrap; }
+  .search-field { flex: 1 1 100%; }
+  .filters select { min-width: 0; flex: 1; }
+  .button-filter { flex: 0 0 auto; }
+  .clear-filter { margin-left: auto; }
+  footer { width: calc(100% - 32px); gap: 16px; font-size: 8px; }
+}

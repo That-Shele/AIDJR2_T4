@@ -1,0 +1,11 @@
+[
+  {"id": "tx_001", "amount": "100.50", "currency": "USD", "timestamp": "2025-03-10 14:22:00", "status": "completed"},
+  {"transaction_id": 204, "total": 10050, "currency_code": "usd", "created_at": "10/03/2025 14:22", "state": "OK"},
+  {"ref": "A-77", "amount": "€99,99", "date": "2025-03-10T14:22:00Z", "result": "success"},
+  {"id": "tx_004", "amount": "24.00", "currency": "EUR", "timestamp": "2025-03-11T09:00:00Z", "status": "pending"},
+  {"id": "tx_005", "amount": "12.40", "currency": "MXN", "timestamp": "2025-03-11T10:15:00Z", "status": "declined"},
+  {"transaction_id": "tx_bad_currency", "total": 2500, "currency_code": "XYZ", "created_at": "10/03/2025 14:22", "state": "OK"},
+  {"ref": "A-79", "amount": "no disponible", "date": "2025-03-10T14:22:00Z", "result": "success"},
+  {"id": "tx_bad_date", "amount": "5.00", "currency": "USD", "timestamp": "ayer", "status": "completed"},
+  {"id": "tx_bad_status", "amount": "8.00", "currency": "USD", "timestamp": "2025-03-10T14:22:00Z", "status": "mystery"}
+]

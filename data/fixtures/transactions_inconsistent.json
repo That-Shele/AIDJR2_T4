@@ -1,0 +1,9 @@
+[
+  {"id": "missing-amount", "currency": "USD", "timestamp": "2025-04-01", "status": "completed"},
+  {"id": "bad-currency", "amount": "10", "currency": "JPY", "timestamp": "2025-04-01", "status": "completed"},
+  {"id": "bad-status", "amount": "10", "currency": "USD", "timestamp": "2025-04-01", "status": "unknown"},
+  {"id": "bad-date", "amount": "10", "currency": "USD", "timestamp": "not-a-date", "status": "completed"},
+  {"ref": "bad-number", "amount": "€abc", "date": "2025-04-01", "result": "success"},
+  null,
+  {"unmapped": true}
+]

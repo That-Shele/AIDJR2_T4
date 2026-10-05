@@ -1,0 +1,187 @@
+{
+  "sources": {
+    "standard": {
+      "id_fields": ["id"],
+      "amount_fields": ["amount"],
+      "currency_fields": ["currency"],
+      "date_fields": ["timestamp"],
+      "status_fields": ["status"]
+    },
+    "legacy": {
+      "id_fields": ["transaction_id"],
+      "amount_fields": ["total"],
+      "currency_fields": ["currency_code"],
+      "date_fields": ["created_at"],
+      "status_fields": ["state"],
+      "amount_divisor": 100
+    },
+    "reference": {
+      "id_fields": ["ref"],
+      "amount_fields": ["amount"],
+      "currency_fields": ["currency", "currency_code"],
+      "date_fields": ["date"],
+      "status_fields": ["result"]
+    },
+    "cent_amount": {
+      "id_fields": ["uuid"],
+      "amount_fields": ["monto_centavos"],
+      "amount_divisor": 100,
+      "currency_fields": ["curr_num"],
+      "date_fields": ["epoch_sec"],
+      "timestamp_unit": "seconds",
+      "status_fields": ["is_paid"]
+    },
+    "invoice": {
+      "id_fields": ["factura_id"],
+      "amount_fields": ["monto_total"],
+      "currency_fields": [],
+      "date_fields": ["fecha_emision"],
+      "status_fields": ["estado_pago"]
+    },
+    "crypto": {
+      "id_fields": ["tx_hash"],
+      "amount_fields": ["value"],
+      "amount_precision": 8,
+      "currency_fields": ["asset"],
+      "date_fields": ["mined_at"],
+      "timestamp_unit": "milliseconds",
+      "status_fields": ["status"]
+    },
+    "nested_payment": {
+      "id_fields": ["_id.$oid"],
+      "amount_fields": ["payment.total_amount"],
+      "currency_fields": ["payment.iso_currency"],
+      "date_fields": ["event_time"],
+      "status_fields": ["statusCode"]
+    },
+    "order": {
+      "id_fields": ["order_num"],
+      "amount_fields": ["price_string"],
+      "currency_fields": ["currency_symbol"],
+      "date_fields": ["tx_date"],
+      "time_fields": ["tx_time"],
+      "status_fields": ["fulfillment"]
+    },
+    "localized": {
+      "id_fields": ["tx_index"],
+      "amount_fields": ["val"],
+      "currency_fields": ["curr"],
+      "date_fields": ["fecha"],
+      "status_fields": ["success"]
+    },
+    "split_amount": {
+      "match_fields": ["pricing.subtotal", "datetime", "status_flags"],
+      "id_fields": ["id"],
+      "amount_fields": ["pricing.subtotal"],
+      "amount_components": ["pricing.subtotal", "pricing.tax", "pricing.tip"],
+      "currency_fields": ["pricing.currency"],
+      "date_fields": ["datetime"],
+      "status_fields": ["status_flags"],
+      "status_flag_priority": ["refunded", "cancelled", "completed"]
+    },
+    "yen": {
+      "id_fields": ["transactionCode"],
+      "amount_fields": ["amountYen"],
+      "currency_fields": ["currency"],
+      "date_fields": ["timestamp_iso"],
+      "status_fields": ["status_text"]
+    },
+    "incomplete": {
+      "id_fields": ["identifier"],
+      "amount_fields": ["charge"],
+      "currency_fields": ["currency"],
+      "date_fields": ["raw_date"],
+      "status_fields": ["state"]
+    },
+    "flexible": {
+      "id_fields": [
+        "id", "transaction_id", "transactionId", "transactionID", "tx_id", "txId",
+        "payment_id", "paymentId", "order_id", "orderId", "external_id", "externalId",
+        "external_reference", "externalReference", "reference", "reference_id", "referenceId",
+        "ref_id", "refId", "uuid", "guid", "identifier", "invoice_id", "invoiceId",
+        "factura_id", "order_num", "transaction_code", "transactionCode", "tx_hash", "hash",
+        "tx_index", "payment_reference", "paymentReference", "merchant_reference", "merchantReference",
+        "trace_id", "traceId", "request_id", "requestId", "checkout_id", "checkoutId",
+        "receipt_id", "receiptId", "record_id", "recordId", "operation_id", "operationId",
+        "transfer_id", "transferId", "authorization_id", "authorizationId", "session_id",
+        "sessionId", "tracking_id", "trackingId", "payment_intent_id", "paymentIntentId",
+        "charge_id", "chargeId", "event_id", "eventId", "_id.$oid"
+      ],
+      "amount_fields": [
+        "amount", "total", "total_amount", "totalAmount", "amount_total", "amountTotal",
+        "payment_amount", "paymentAmount", "value", "price", "charge", "monto", "importe",
+        "amount_value", "gross_amount", "grossAmount", "net_amount", "netAmount", "amount_paid",
+        "amountPaid", "paid_amount", "paidAmount", "order_total", "orderTotal", "subtotal",
+        "val", "monto_total", "price_string"
+      ],
+      "currency_fields": [
+        "currency", "currency_code", "currencyCode", "curr", "iso_currency", "isoCurrency",
+        "currency_symbol", "currencySymbol", "asset", "curr_num"
+      ],
+      "date_fields": [
+        "timestamp", "timestamp_iso", "created_at", "createdAt", "date", "date_created",
+        "dateCreated", "transaction_date", "transactionDate", "event_time", "eventTime",
+        "occurred_at", "occurredAt", "processed_at", "processedAt", "paid_at", "paidAt",
+        "payment_date", "paymentDate", "tx_date", "fecha", "dateTime", "datetime",
+        "transaction_time", "transactionTime"
+      ],
+      "status_fields": [
+        "status", "state", "result", "outcome", "payment_status", "paymentStatus",
+        "transaction_status", "transactionStatus", "status_text", "statusText", "statusCode",
+        "success", "is_paid", "paid", "fulfillment", "payment_state", "paymentState"
+      ]
+    }
+  },
+  "supported_currencies": [
+    "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN",
+    "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BOV", "BRL", "BSD", "BTN", "BWP", "BYN", "BZD",
+    "CAD", "CDF", "CHE", "CHF", "CHW", "CLF", "CLP", "CNY", "COP", "COU", "CRC", "CUP", "CVE", "CZK",
+    "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP",
+    "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HTG", "HUF",
+    "HRK", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT",
+    "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU", "MUR", "MVR", "MWK", "MXN", "MXV", "MYR", "MZN",
+    "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF",
+    "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLE", "SLL", "SOS", "SRD", "SSP", "STN", "SVC", "SYP", "SZL",
+    "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USN", "UYI", "UYU", "UYW", "UZS",
+    "VES", "VND", "VUV", "WST", "XAF", "XAG", "XAU", "XBA", "XBB", "XBC", "XBD", "XCD", "XCG", "XDR", "XOF", "XPD", "XPF", "XPT", "XSU", "XTS", "XUA", "XXX",
+    "YER", "ZAR", "ZMW", "ZWG",
+    "AAVE", "ADA", "ARB", "ATOM", "AVAX", "BCH", "BNB", "BTC", "CRO", "DAI", "DOGE", "DOT", "ETC", "ETH", "FIL", "HBAR", "ICP", "LINK", "LTC", "MKR", "NEAR", "OP", "SHIB", "SOL", "SUI", "TON", "TRX", "UNI", "USDC", "USDT", "WBTC", "XLM", "XMR", "XRP"
+  ],
+  "currency_aliases": {
+    "usd": "USD", "us dollar": "USD", "dollar": "USD", "dólar": "USD",
+    "eur": "EUR", "euro": "EUR", "€": "EUR",
+    "gbp": "GBP", "pound": "GBP", "£": "GBP",
+    "mxn": "MXN", "mx$": "MXN", "cad": "CAD", "c$": "CAD",
+    "jpy": "JPY", "yen": "JPY", "¥": "JPY", "eth": "ETH",
+    "inr": "INR", "rupee": "INR", "₹": "INR",
+    "zar": "ZAR", "rand": "ZAR", "₽": "RUB", "ruble": "RUB",
+    "₩": "KRW", "฿": "THB", "₺": "TRY", "₫": "VND", "₪": "ILS",
+    "₦": "NGN", "₱": "PHP", "₴": "UAH", "₡": "CRC", "₲": "PYG", "₵": "GHS",
+    "bitcoin": "BTC", "ether": "ETH", "ethereum": "ETH", "tether": "USDT", "usd coin": "USDC"
+  },
+  "currency_numeric_aliases": {
+    "008": "ALL", "012": "DZD", "032": "ARS", "036": "AUD", "044": "BSD", "048": "BHD", "050": "BDT", "051": "AMD", "052": "BBD", "060": "BMD", "064": "BTN", "068": "BOB", "072": "BWP", "084": "BZD", "090": "SBD", "096": "BND",
+    "104": "MMK", "108": "BIF", "116": "KHR", "124": "CAD", "132": "CVE", "136": "KYD", "144": "LKR", "152": "CLP", "156": "CNY", "170": "COP", "174": "KMF", "188": "CRC", "191": "HRK", "192": "CUP", "203": "CZK", "208": "DKK", "214": "DOP", "222": "SVC", "230": "ETB", "232": "ERN", "238": "FKP", "242": "FJD", "262": "DJF", "270": "GMD", "292": "GIP", "320": "GTQ", "324": "GNF", "328": "GYD", "332": "HTG", "340": "HNL", "344": "HKD", "348": "HUF", "352": "ISK", "356": "INR", "360": "IDR", "364": "IRR", "368": "IQD", "376": "ILS", "388": "JMD", "392": "JPY", "400": "JOD", "404": "KES", "408": "KPW", "410": "KRW", "414": "KWD", "417": "KGS", "418": "LAK", "422": "LBP", "426": "LSL", "430": "LRD", "434": "LYD", "446": "MOP", "454": "MWK", "458": "MYR", "462": "MVR", "480": "MUR", "484": "MXN", "496": "MNT", "498": "MDL", "504": "MAD", "512": "OMR", "516": "NAD", "524": "NPR", "532": "XCG", "533": "AWG", "548": "VUV", "554": "NZD", "558": "NIO", "566": "NGN", "578": "NOK", "586": "PKR", "590": "PAB", "598": "PGK", "600": "PYG", "604": "PEN", "608": "PHP", "634": "QAR", "643": "RUB", "646": "RWF", "654": "SHP", "682": "SAR", "690": "SCR", "694": "SLL", "702": "SGD", "704": "VND", "706": "SOS", "710": "ZAR", "728": "SSP", "748": "SZL", "752": "SEK", "756": "CHF", "760": "SYP", "764": "THB", "776": "TOP", "784": "AED", "788": "TND", "800": "UGX", "807": "MKD", "818": "EGP", "826": "GBP", "834": "TZS", "840": "USD", "858": "UYU", "860": "UZS", "882": "WST", "886": "YER", "901": "TWD", "943": "MZN", "944": "AZN", "946": "RON", "949": "TRY", "950": "XAF", "951": "XCD", "952": "XOF", "953": "XPF", "960": "XDR", "968": "SRD", "969": "MGA", "971": "AFN", "972": "TJS", "973": "AOA", "975": "BGN", "976": "CDF", "977": "BAM", "978": "EUR", "980": "UAH", "981": "GEL", "985": "PLN", "986": "BRL", "999": "XXX"
+  },
+  "currency_symbols": {"€": "EUR", "£": "GBP", "$": "USD", "¥": "JPY", "₹": "INR", "₽": "RUB", "₩": "KRW", "฿": "THB", "₺": "TRY", "₫": "VND", "₪": "ILS", "₦": "NGN", "₱": "PHP", "₴": "UAH", "₡": "CRC", "₲": "PYG", "₵": "GHS"},
+  "status_aliases": {
+    "completado": "Completado", "completed": "Completado", "complete": "Completado", "ok": "Completado", "success": "Completado", "successful": "Completado",
+    "aprobado": "Completado", "approved": "Completado", "delivered": "Completado", "settled": "Completado", "paid": "Completado", "paid_and_closed": "Completado", "captured": "Completado", "done": "Completado", "200": "Completado", "201": "Completado", "204": "Completado", "1": "Completado", "true": "Completado",
+    "pendiente": "Pendiente", "pending": "Pendiente", "processing": "Pendiente", "in_progress": "Pendiente", "partially_paid": "Pendiente", "requires_action": "Pendiente", "under_review": "Pendiente", "authorized": "Pendiente", "authorization": "Pendiente", "queued": "Pendiente", "waiting": "Pendiente", "202": "Pendiente",
+    "fallido": "Fallido", "failed": "Fallido", "failure": "Fallido", "error": "Fallido", "declined": "Fallido", "denegado": "Fallido", "denied": "Fallido", "rejected": "Fallido", "rechazado": "Fallido", "refused": "Fallido", "timeout": "Fallido", "expired": "Fallido", "0": "Fallido", "false": "Fallido",
+    "cancelado": "Cancelado", "cancelled": "Cancelado", "canceled": "Cancelado", "void": "Cancelado", "aborted": "Cancelado",
+    "reembolsado": "Reembolsado", "refunded": "Reembolsado", "refund": "Reembolsado", "chargeback": "Reembolsado", "reversed": "Reembolsado"
+  },
+  "status_pattern_priority": ["Reembolsado", "Cancelado", "Fallido", "Pendiente", "Completado"],
+  "status_patterns": {
+    "Completado": ["approv", "accept", "succeed", "success", "complete", "paid", "settled", "deliver", "fulfill", "captur", "confirm", "posted", "closed", "done", "aprob", "pagad", "entreg"],
+    "Pendiente": ["pend", "process", "wait", "await", "queue", "hold", "review", "initiated", "authoriz", "created", "submitted", "confirming", "validating", "progress", "requires_action"],
+    "Fallido": ["fail", "error", "declin", "reject", "deni", "deneg", "timeout", "expired", "blocked", "invalid", "refus"],
+    "Cancelado": ["cancel", "void", "abort", "terminat"],
+    "Reembolsado": ["refund", "chargeback", "revers", "return","reimburse"]
+  },
+  "status_similarity_threshold": 0.8,
+  "max_status_length": 80,
+  "normalized_statuses": ["Reembolsado", "Cancelado", "Fallido", "Pendiente", "Completado"],
+  "date_formats": ["%Y-%m-%d %H:%M:%S", "%d/%m/%Y %H:%M", "%d-%m-%Y", "%Y%m%d", "%Y%m%d %H%M%S", "%b %d, %Y %I:%M %p", "%Y-%m-%d", "%d/%m/%Y"]
+}
